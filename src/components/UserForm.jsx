@@ -20,13 +20,13 @@ export const UserForm = () => {
     })
   }
 
-  const onSubmit = (event)=>{
+  const onSubmit =(event)=>{
     event.preventDefault();
-    //console.log(userForm);
     if(!username || !password || !email){
       alert('Debe completar los campos en el formulario');
       return;
     }
+    console.log(userForm);
     //Guardar el user form en el listado del formulario
     setUserForm(initialUserForm);
   }
@@ -37,26 +37,29 @@ export const UserForm = () => {
         <input
           className='form-control my-3 w-75'
           placeholder='Username'
-          type="text"
-          name={username}
+          name="username"
+          value={username}
           onChange={onInputChange}
         />
         <input
           className='form-control my-3 w-75'
           placeholder='Password'
           type="password"
-          name={password}
+          value={password}
+          name="password"
         onChange={onInputChange}
         />
         <input
           className='form-control my-3 w-75'
           placeholder='Email'
-          type="text"
-          name={email}
+          value={email}
+          name="email"
           onChange={onInputChange}
         />
         <button
-          className='btn btn-primary btn-sm'>
+          className='btn btn-primary btn-sm'
+          type='submit'
+        >
         Crear
         </button>
       </form>
