@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import {UserForm} from './components/UserForm';
 import {UsersList} from './components/UsersList';
+import {userReducer} from './reducers/usersReducer';
 
 const initialUsers=[
   {
@@ -14,8 +15,14 @@ const initialUsers=[
 {/*TODO: USER APP*/}
 export const UsersApp = () => {
 
+  const [users, dispatch] =useReducer(userReducer, initialUsers);
+
   const handlerAddUser =(user)=>{
-    console.log(user);
+    //console.log(user);
+    dispatch({
+      type: 'addUser',
+      payload: user,
+    })
   }
 
   return (
@@ -30,7 +37,7 @@ export const UsersApp = () => {
           </div>
           <div className="col">
             <UsersList
-              users={initialUsers}
+              users={users}
             />
           </div>
         </div>
