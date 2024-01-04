@@ -6,7 +6,7 @@ const initialUserForm = {
   email:"",
 }
 
-export const UserForm = () => {
+export const UserForm = ({ handlerAddUser }) => {
 
   const [ userForm, setUserForm ] = useState(initialUserForm);
 
@@ -27,6 +27,7 @@ export const UserForm = () => {
       return;
     }
     console.log(userForm);
+    handlerAddUser(userForm);
     //Guardar el user form en el listado del formulario
     setUserForm(initialUserForm);
   }

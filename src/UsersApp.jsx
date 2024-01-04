@@ -14,6 +14,9 @@ const initialUsers=[
 {/*TODO: USER APP*/}
 export const UsersApp = () => {
 
+  const handlerAddUser =(user)=>{
+    console.log(user);
+  }
 
   return (
     <>
@@ -21,10 +24,14 @@ export const UsersApp = () => {
         <h2>User App</h2>
         <div className="row">
           <div className="col">
-            <UserForm/>
+            <UserForm
+              handlerAddUser={handlerAddUser}
+            />
           </div>
           <div className="col">
-            <UsersList users={initialUsers}/>
+            <UsersList
+              users={initialUsers}
+            />
           </div>
         </div>
       </div>
