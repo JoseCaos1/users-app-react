@@ -1,0 +1,27 @@
+import React, { useState } from 'react';
+
+export const UserRow = ({id, username, email}) => {
+  return (
+    <>
+      <tr key={id}>
+        <td>{id}</td>
+        <td>{username}</td>
+        <td>{email}</td>
+        <td>
+        <button
+          type='button'
+          className='btn btn-secondary btn-sm'
+        >
+          update
+        </button>
+        <button
+          type='button'
+          className='btn btn-danger btn-sm'
+        >
+          Delete
+        </button>
+        </td>
+      </tr>
+    </>
+  );
+}
