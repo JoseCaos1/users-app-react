@@ -13,18 +13,27 @@ export const UserForm = () => {
   const { username, password, email }= userForm;
 
   const onInputChange=({target})=>{
-    //console.log(target.value);
     const { name, value }=target;
     setUserForm({
       ...userForm,
       [name]: value,
     })
-    console.log(userForm);
+  }
+
+  const onSubmit = (event)=>{
+    event.preventDefault();
+    //console.log(userForm);
+    if(!username || !password || !email){
+      alert('Debe completar los campos en el formulario');
+      return;
+    }
+    //Guardar el user form en el listado del formulario
+    setUserForm(initialUserForm);
   }
 
   return (
     <>
-      <form>
+      <form onSubmit={ onSubmit }>
         <input
           className='form-control my-3 w-75'
           placeholder='Username'
