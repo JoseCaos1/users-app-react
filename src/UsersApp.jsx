@@ -12,6 +12,12 @@ const initialUsers=[
   },
 ]
 
+const initialUserForm = {
+  username: '',
+  password:"",
+  email:"",
+}
+
 {/*TODO: USER APP*/}
 export const UsersApp = () => {
 
@@ -41,13 +47,18 @@ export const UsersApp = () => {
           <div className="col">
             <UserForm
               handlerAddUser={handlerAddUser}
+              initialUserForm ={initialUserForm}
             />
           </div>
           <div className="col">
-            <UsersList
-              users={users}
-              handlerRemoveUser={handlerRemoveUser}
-            />
+            {
+              users.length ===0
+                ? <div className="alert alert-warning">No hay usuarios en el sistema</div>
+                : <UsersList
+                    users={users}
+                    handlerRemoveUser={handlerRemoveUser}
+                  />
+            }
           </div>
         </div>
       </div>
