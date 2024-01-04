@@ -10,6 +10,8 @@ export const userReducer=( state=[], action )=>{
         }
       ]
       break;
+    case 'removeUser':
+      return state.filter(user=> user.id !== action.payload);
 
     default:
       break;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {UserRow} from './UserRow';
 
-export const UsersList = ({ users }) => {
+export const UsersList = ({ users=[], handlerRemoveUser  }) => {
   return (
     <>
       <table className='table table-hover table-striped'>
@@ -22,6 +22,7 @@ export const UsersList = ({ users }) => {
                 id={id}
                 username={username}
                 email={email}
+                handlerRemoveUser ={handlerRemoveUser}
               />
             ))
          }

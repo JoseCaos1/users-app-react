@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
-export const UserRow = ({id, username, email}) => {
+export const UserRow = ({ handlerRemoveUser ,id, username, email }) => {
+
+  const onRemoveUser=(id)=>{
+    handlerRemoveUser(id);
+  }
+
   return (
     <>
       <tr key={id}>
@@ -17,6 +22,7 @@ export const UserRow = ({id, username, email}) => {
         <button
           type='button'
           className='btn btn-danger btn-sm'
+          onClick={()=>onRemoveUser(id)}
         >
           Delete
         </button>
