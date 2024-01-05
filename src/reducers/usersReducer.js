@@ -10,8 +10,20 @@ export const userReducer=( state=[], action )=>{
         }
       ]
       break;
+
     case 'removeUser':
       return state.filter(user=> user.id !== action.payload);
+
+    case 'updateUser':
+      return state.map((u)=>{
+        if( u.id === action.payload.id ){
+          return{
+            ...action.payload
+          };
+        }
+        return u;
+      })
+      break;
 
     default:
       break;
