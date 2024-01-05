@@ -1,4 +1,5 @@
 import {UserForm} from './components/UserForm';
+import {UserModalForms} from './components/UserModalForms';
 import {UsersList} from './components/UsersList';
 import {useUsers} from './hooks/useUsers';
 
@@ -19,18 +20,19 @@ const {
 
   return (
     <>
+
+      { !visibleForm ||
+      <UserModalForms
+        userSelected ={userSelected}
+        initialUserForm={initialUserForm}
+        handlerAddUser={handlerAddUser}
+        handlerCloseForm={handlerCloseForm}
+        />
+      }
+
       <div className='container my-4'>
         <h2>User App</h2>
         <div className="row">
-            { !visibleForm || <div className="col">
-                <UserForm
-                  userSelected={userSelected}
-                  handlerAddUser={handlerAddUser}
-                  initialUserForm ={initialUserForm}
-                  handlerCloseForm={handlerCloseForm}
-                />
-              </div>
-            }
           <div className="col">
             { visibleForm || <button
               className='btn btn-primary my-2'
