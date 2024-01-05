@@ -2,6 +2,7 @@ import React, { useReducer, useState } from 'react';
 import Swal from 'sweetalert2';
 import {LoginPage} from './auth/pages/LoginPage';
 import {loginReducer} from './auth/reducers/loginReducer';
+import {Navbar} from './components/layout/Navbar';
 import {UsersPage} from './pages/UsersPage';
 
 //Si existe una login ya no, caso contrario si existe un login le pasamos este por defecto
@@ -34,13 +35,25 @@ export const UserApp = () => {
         text: "Username o password invalidos",
       });
     }
-
   }
+
+  const handlerLogout=()=>{
+    dispatch({
+      type: 'logout',
+    });
+    sessionStorage.removeItem('login')
+  }
+
   return (
     <>
       {
         login.isAuth
-        ? <UsersPage/>
+          ? (<>
+            <Navbar
+              login={login}
+              handlerLogout={handlerLogout}/>
+            <UsersPage/>
+            </>)
         : <LoginPage handlerLogin={handlerLogin}/>
       }
 
