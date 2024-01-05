@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 
-export const UserForm = ({ userSelected, handlerAddUser, initialUserForm }) => {
+export const UserForm = ({
+  userSelected,
+  handlerAddUser,
+  initialUserForm,
+  handlerCloseForm
+}) => {
 
   const [ userForm, setUserForm ] = useState(initialUserForm);
 
@@ -36,6 +41,11 @@ export const UserForm = ({ userSelected, handlerAddUser, initialUserForm }) => {
     console.log(userForm);
     handlerAddUser(userForm);
     //Guardar el user form en el listado del formulario
+    setUserForm(initialUserForm);
+  }
+
+  const onCloseForm=()=>{
+    handlerCloseForm();
     setUserForm(initialUserForm);
   }
 
@@ -82,6 +92,7 @@ export const UserForm = ({ userSelected, handlerAddUser, initialUserForm }) => {
         <button
           type='button'
           className='btn btn-primary my-2 btn-sm'
+          onClick={()=> onCloseForm()}
         >
           Cerrar
         </button>

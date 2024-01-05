@@ -37,8 +37,7 @@ export const useUsers =()=>{
       text: `El usuario ha sido ${user.id === 0  ? 'creado' : 'actualizado'} con exito`,
       icon: "success"
     });
-    setVisibleForm(false);
-    setUserSelected(initialUserForm);
+    handlerCloseForm();
   }
 
   const handlerRemoveUser =(id)=>{
@@ -75,6 +74,14 @@ export const useUsers =()=>{
     setUserSelected({ ...user })
   }
 
+  const handlerOpenForm = ()=>{
+    setVisibleForm(true)
+  }
+  const handlerCloseForm = ()=>{
+    setVisibleForm(false)
+    setUserSelected(initialUserForm)
+  }
+
   return{
     users,
     userSelected,
@@ -84,5 +91,7 @@ export const useUsers =()=>{
     handlerAddUser,
     handlerRemoveUser,
     handlerUserSelectedForm,
+    handlerOpenForm,
+    handlerCloseForm
   }
 }
