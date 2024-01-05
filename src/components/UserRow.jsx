@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 
-export const UserRow = ({ handlerRemoveUser ,id, username, email }) => {
-
-  const onRemoveUser=(id)=>{
-    handlerRemoveUser(id);
-  }
+export const UserRow = ({ handlerUserSelectedForm, handlerRemoveUser ,id, username, email, password }) => {
 
   return (
     <>
@@ -16,6 +12,12 @@ export const UserRow = ({ handlerRemoveUser ,id, username, email }) => {
           <button
             type='button'
             className='btn btn-secondary btn-sm'
+            onClick={()=> handlerUserSelectedForm({
+              id,
+              username,
+              email,
+              password
+            })}
           >
             update
           </button>
@@ -24,7 +26,7 @@ export const UserRow = ({ handlerRemoveUser ,id, username, email }) => {
           <button
             type='button'
             className='btn btn-danger btn-sm'
-            onClick={()=>onRemoveUser(id)}
+            onClick={()=>handlerRemoveUser(id)}
           >
             Delete
           </button>

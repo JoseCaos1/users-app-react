@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-export const UserForm = ({ handlerAddUser, initialUserForm }) => {
+export const UserForm = ({ userSelected, handlerAddUser, initialUserForm }) => {
 
   const [ userForm, setUserForm ] = useState(initialUserForm);
 
   const { username, password, email }= userForm;
+
+  useEffect(()=>{
+    setUserForm({
+      ...userSelected,
+    })
+  },[userSelected])
 
   const onInputChange=({target})=>{
     const { name, value }=target;

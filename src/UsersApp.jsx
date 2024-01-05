@@ -22,6 +22,7 @@ const initialUserForm = {
 export const UsersApp = () => {
 
   const [users, dispatch] =useReducer(userReducer, initialUsers);
+  const [userSelected, setUserSelected]= useState(initialUserForm);
 
   const handlerAddUser =(user)=>{
     //console.log(user);
@@ -39,6 +40,12 @@ export const UsersApp = () => {
     })
   }
 
+  //seleccionar a usuario
+  const handlerUserSelectedForm=(user)=>{
+    console.log(user);
+    setUserSelected({ ...user })
+  }
+
   return (
     <>
       <div className='container my-4'>
@@ -46,6 +53,7 @@ export const UsersApp = () => {
         <div className="row">
           <div className="col">
             <UserForm
+              userSelected={userSelected}
               handlerAddUser={handlerAddUser}
               initialUserForm ={initialUserForm}
             />
@@ -57,6 +65,7 @@ export const UsersApp = () => {
                 : <UsersList
                     users={users}
                     handlerRemoveUser={handlerRemoveUser}
+                    handlerUserSelectedForm={handlerUserSelectedForm}
                   />
             }
           </div>
