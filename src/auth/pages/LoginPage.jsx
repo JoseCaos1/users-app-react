@@ -6,7 +6,7 @@ const initialLoginForm={
   password: '',
 }
 
-export const LoginPage = () => {
+export const LoginPage = ({ handlerLogin }) => {
   const [loginForm, setLoginForm] = useState(initialLoginForm)
   const { username, password }= loginForm;
 
@@ -34,15 +34,8 @@ export const LoginPage = () => {
       });
     }
     //Implementamos el login
-    if( username==="admin" && password ==="12345" ){
-      //handlerLogin();
-    }else{
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Username o password invalidos",
-      });
-    }
+    handlerLogin(loginForm);
+
     //Reiniciamos los datos del formulario
     setLoginForm(initialLoginForm);
   }
