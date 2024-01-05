@@ -1,3 +1,4 @@
+import {LoginPage} from './auth/pages/LoginPage';
 import {UserForm} from './components/UserForm';
 import {UserModalForms} from './components/UserModalForms';
 import {UsersList} from './components/UsersList';
