@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
-export const UserRow = ({ handlerUserSelectedForm, handlerRemoveUser ,id, username, email, password }) => {
+export const UserRow = ({
+  handlerUserSelectedForm,
+  handlerRemoveUser,
+  id,
+  username,
+  email,
+  password }) => {
 
   return (
     <>
@@ -16,7 +22,6 @@ export const UserRow = ({ handlerUserSelectedForm, handlerRemoveUser ,id, userna
               id,
               username,
               email,
-              password
             })}
           >
             update

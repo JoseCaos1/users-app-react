@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import {UserRow} from './UserRow';
 
-export const UsersList = ({ users=[], handlerRemoveUser, handlerUserSelectedForm  }) => {
+export const UsersList = ({
+  users=[],
+  handlerRemoveUser,
+  handlerUserSelectedForm
+}) => {
   return (
     <>
       <table className='table table-hover table-striped'>
@@ -16,11 +20,10 @@ export const UsersList = ({ users=[], handlerRemoveUser, handlerUserSelectedForm
         </thead>
         <tbody>
           {
-            users.map(({id, username, email, password})=>(
+            users.map(({id, username, email})=>(
               <UserRow
                 handlerUserSelectedForm={handlerUserSelectedForm}
                 key={id}
-                password={password}
                 id={id}
                 username={username}
                 email={email}
