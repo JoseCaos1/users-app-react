@@ -4,7 +4,8 @@ import {LoginPage} from './auth/pages/LoginPage';
 import {loginReducer} from './auth/reducers/loginReducer';
 import {UsersPage} from './pages/UsersPage';
 
-const initialLogin = {
+//Si existe una login ya no, caso contrario si existe un login le pasamos este por defecto
+const initialLogin = JSON.parse(sessionStorage.getItem('login')) || {
   isAuth : false,
   user: undefined,
 }
@@ -22,6 +23,10 @@ export const UserApp = () => {
         type: 'login',
         payload: user,
       });
+      sessionStorage.setItem('login', JSON.stringify({
+        isAuth: true,
+        user,
+      }));
     }else{
       Swal.fire({
         icon: "error",
