@@ -2,9 +2,7 @@ import {UserForm} from './components/UserForm';
 import {UsersList} from './components/UsersList';
 import {useUsers} from './hooks/useUsers';
 
-{/*TODO: USER APP*/}
 export const UsersApp = () => {
-
 
 const {
     users,

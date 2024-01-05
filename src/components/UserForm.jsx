@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 export const UserForm = ({ userSelected, handlerAddUser, initialUserForm }) => {
 
@@ -24,7 +25,12 @@ export const UserForm = ({ userSelected, handlerAddUser, initialUserForm }) => {
   const onSubmit =(event)=>{
     event.preventDefault();
     if(!username || ( !password && id===0 ) || !email){
-      alert('Debe completar los campos en el formulario');
+
+      Swal.fire({
+        title: "Error de validacion",
+        text: "Debe completar los campos en el formulario",
+        icon: "error"
+      });
       return;
     }
     console.log(userForm);
