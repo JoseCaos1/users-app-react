@@ -78,6 +78,13 @@ export const UserForm = ({ userSelected, handlerAddUser, initialUserForm }) => {
         >
           { id>0 ? 'Editar' : 'Crear' }
         </button>
+
+        <button
+          type='button'
+          className='btn btn-primary my-2 btn-sm'
+        >
+          Cerrar
+        </button>
       </form>
     </>
   );

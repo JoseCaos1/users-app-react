@@ -22,31 +22,23 @@ export const useUsers =()=>{
 
   const [users, dispatch] =useReducer(userReducer, initialUsers);
   const [userSelected, setUserSelected]= useState(initialUserForm);
+  const [visibleForm, setVisibleForm] = useState(false)
 
   //Agregar o actualizar
   const handlerAddUser =(user)=>{
-    let type;
-    let title;
-    let icon;
-
-    if (user.id ===0 ){
-      type ='addUser';
-      title: "Usuario creado";
-    }else{
-      type ='updateUser';
-      title: "Usuario actualizado"
-    }
 
     dispatch({
-      type,
+      type :(user.id ===0) ? 'addUser' : 'updateUser',
       payload: user,
     });
 
     Swal.fire({
-      title,
+      title: (user.id ===0) ? 'Usuario creado' : 'Usuario actualizado',
       text: `El usuario ha sido ${user.id === 0  ? 'creado' : 'actualizado'} con exito`,
-      icon: "question"
+      icon: "success"
     });
+    setVisibleForm(false);
+    setUserSelected(initialUserForm);
   }
 
   const handlerRemoveUser =(id)=>{
@@ -79,6 +71,7 @@ export const useUsers =()=>{
 
   const handlerUserSelectedForm=(user)=>{
     console.log(user);
+    setVisibleForm(true)
     setUserSelected({ ...user })
   }
 
@@ -86,6 +79,7 @@ export const useUsers =()=>{
     users,
     userSelected,
     initialUserForm,
+    visibleForm,
 
     handlerAddUser,
     handlerRemoveUser,
