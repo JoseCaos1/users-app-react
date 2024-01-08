@@ -14,8 +14,11 @@ export const RegisterPage = ({
 
   useEffect(()=>{
     console.log(id);
-    const user=users.find((u) => u.id ==id) || initialUserForm;
-    setUserSelected(user);
+    if(id){
+      const user=users.find((u) => u.id ==id) || initialUserForm;
+      setUserSelected(user);
+    }
+
   },[id])
 
   return (
