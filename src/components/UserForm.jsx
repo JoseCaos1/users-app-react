@@ -89,13 +89,16 @@ export const UserForm = ({
           { id>0 ? 'Editar' : 'Crear' }
         </button>
 
-        <button
-          type='button'
-          className='btn btn-primary my-2 btn-sm'
-          onClick={()=> onCloseForm()}
-        >
-          Cerrar
-        </button>
+        {
+        !handlerCloseForm ||<button
+            type='button'
+            className='btn btn-primary my-2 btn-sm'
+            onClick={()=> onCloseForm()}
+          >
+            Cerrar
+          </button>
+        }
+
       </form>
     </>
   );
