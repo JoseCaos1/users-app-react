@@ -1,42 +1,39 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
+import {AuthContext} from '../context/AuthContext';
 
 const initialLoginForm={
   username: '',
   password: '',
 }
 
-export const LoginPage = ({ handlerLogin }) => {
+export const LoginPage = () => {
+
+  const { handlerLogin }=useContext(AuthContext);
   const [loginForm, setLoginForm] = useState(initialLoginForm)
   const { username, password }= loginForm;
 
   const onInputChange= ({target})=>{
     const {name, value} = target;
-    //console.log(name + ': ' + target.value);
 
     setLoginForm({
       ...loginForm,
         [name]: value,
     })
-    //console.log(loginForm);
   }
 
   const onSubmit=(event)=>{
-    //console.log('submit');
     event.preventDefault();
 
     if(!username || !password){
-      //console.log("ingrese user y password");
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Usuario y Password requeridos ",
       });
     }
-    //Implementamos el login
     handlerLogin(loginForm);
 
-    //Reiniciamos los datos del formulario
     setLoginForm(initialLoginForm);
   }
 

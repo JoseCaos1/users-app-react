@@ -4,21 +4,22 @@ import {Navbar} from './components/layout/Navbar';
 import {UsersPage} from './pages/UsersPage';
 import {Routes, Route, Navigate} from 'react-router-dom';
 import {UserRoutes} from './routes/UserRoutes';
+import {useContext} from 'react';
+import {AuthContext} from './auth/context/AuthContext';
 
 export const UserApp = () => {
 
-  const { login, handlerLogin, handlerLogout }=useAuth();
+  const { login } = useContext(AuthContext);
+
   return (
     <Routes>
       {
         login.isAuth
           ? (<>
-              <Route path='/*' element={<UserRoutes
-                login={login} handlerLogout={handlerLogout} />}/>
+              <Route path='/*' element={<UserRoutes />}/>
               </>)
             :<>
-              <Route path='/login'
-                element={<LoginPage handlerLogin={handlerLogin}/>} />
+              <Route path='/login' element={<LoginPage />} />
               <Route path='/*' element={ <Navigate to='/login' /> } />
             </>
 
