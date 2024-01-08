@@ -1,32 +1,25 @@
+import {useContext} from 'react';
 import {LoginPage} from '../auth/pages/LoginPage';
 import {UserForm} from '../components/UserForm';
 import {UserModalForms} from '../components/UserModalForms';
 import {UsersList} from '../components/UsersList';
+import {UserContext} from '../context/UserContext';
 import {useUsers} from '../hooks/useUsers';
 
-export const UsersPage = ({
-    users,
-    userSelected,
-    initialUserForm,
-    visibleForm,
+export const UsersPage = () => {
 
-    handlerAddUser,
+  const {
+    users,
+    visibleForm,
     handlerRemoveUser,
     handlerUserSelectedForm,
     handlerOpenForm,
-    handlerCloseForm
-  }) => {
+  } =useContext(UserContext);
 
   return (
     <>
-
       { !visibleForm ||
-      <UserModalForms
-        userSelected ={userSelected}
-        initialUserForm={initialUserForm}
-        handlerAddUser={handlerAddUser}
-        handlerCloseForm={handlerCloseForm}
-        />
+      <UserModalForms/>
       }
 
       <div className='container my-4'>
