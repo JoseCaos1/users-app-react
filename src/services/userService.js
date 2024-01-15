@@ -25,7 +25,7 @@ export const save= async ({ username, email, password })=>{
   return undefined;
 }
 
-export const update = async ({ username, email })=>{
+export const update = async ({ id, username, email })=>{
   try{
     return await axios.put(`${BASE_URL}/${id}`,{
       username,
