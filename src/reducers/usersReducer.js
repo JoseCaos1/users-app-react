@@ -26,6 +26,9 @@ export const userReducer=( state=[], action )=>{
       })
       break;
 
+    case 'loadingUsers':
+      return action.payload;
+
     default:
       break;
   }

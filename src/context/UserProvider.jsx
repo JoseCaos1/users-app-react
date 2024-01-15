@@ -13,7 +13,8 @@ const {
     handlerRemoveUser,
     handlerUserSelectedForm,
     handlerOpenForm,
-    handlerCloseForm
+    handlerCloseForm,
+    getUsers
   }=useUsers();
 
   return (
@@ -27,7 +28,8 @@ const {
           handlerRemoveUser,
           handlerUserSelectedForm,
           handlerOpenForm,
-          handlerCloseForm
+          handlerCloseForm,
+          getUsers,
         }
       }>
       {children}
